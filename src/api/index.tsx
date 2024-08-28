@@ -7984,5 +7984,5 @@ const data = [
 ]
 
 export const getData = async () => {
-  return Promise.resolve<DataItem[]>(data)
+  return Promise.resolve<DataItem[]>(data as unknown as DataItem[])
 }

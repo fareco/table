@@ -1,8 +1,6 @@
 {
   "name": "table-test",
-  "description": "",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,9 +9,24 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "lint": "eslint src --max-warnings=0",
-    "typecheck": "tsc --project tsconfig.json --noEmit"
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,css,html}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -35,6 +48,8 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-tailwindcss": "^3.17.4",
     "happy-dom": "^12.10.3",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.9",
     "postcss": "^8.4.41",
     "prettier": "3.1.1",
     "tailwindcss": "^3.4.10",
